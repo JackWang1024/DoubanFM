@@ -1,0 +1,28 @@
+{
+  "name": "DoubanFM",
+  "version": "1.0.0",
+  "description": "DoubanFM desktop version built on electron",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boxizen/DoubanFM.git"
+  },
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial"
+  ],
+  "author": "GitHub",
+  "license": "CC0-1.0",
+  "bugs": {
+    "url": "https://github.com/boxizen/DoubanFM/issues"
+  },
+  "homepage": "https://github.com/boxizen/DoubanFM#readme",
+  "devDependencies": {
+    "electron-prebuilt": "^1.2.0"
+  }
+}
