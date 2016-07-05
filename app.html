@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <title>豆瓣FM电台</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="author" content="boxizen">
+    <meta name="Copyright" content="boxizen">
+    <meta name="keywords" content="豆瓣FM电台, 桌面版" />
+    <meta name="applicable-device" content="mobile">
+    <link rel="stylesheet" type="text/css" href="assets/css/radio.css">
+</head>
+<body>
+<audio id="audio" style="display: none"></audio>
+<div class="wrap">
+    <div class="album_show">
+        <img class="album" src="https://img3.doubanio.com/lpic/s4498971.jpg" />
+    </div>
+    <div class="radio_show">
+        <a href="javascript:void(0);" class="icon_pause"><span class="iconfont radio_btn_pause">&#xe600;</span></a>
+        <div class="radio_top">
+            <p class="title">Amy Diamond</p>
+            <p class="desc">&lt; Music In Motion &gt; 2016</p>
+        </div>
+        <div class="radio_progress">
+            <span class="radio_song__name" id="j_song_name">Unterstadt - Oberstadt - Zirkusstadt</span>
+            <span class="radio_progress__time radio_progress__label" id="j_song_pro_crt">00:00</span>
+            <div class="radio_progress__bar">
+                <span class="radio_progress__load" id="j_song_buf" style="width:70%;"></span>
+                <div class="radio_progress__now" id="j_song_prg_now" style="width:30%;"></div>
+            </div>
+            <span class="radio_progress__total radio_progress__label" id="j_song_pro_total">00:00</span>
+        </div>
+        <ul class="radio_control">
+            <li class="radio_control__item">
+                <a href="javascript:void(0);" class="radio_control__btn"><span class="iconfont icon_heart radio_control__icon" id="j_btn_play">&#xe603;</span></a>
+            </li>
+            <li class="radio_control__item">
+                <a href="javascript:void(0);" class="radio_control__btn"><span class="iconfont icon_rubish radio_control__icon" id="j_btn_kge">&#xe606;</span></a>
+            </li>
+            <li class="radio_control__item">
+                <a href="javascript:void(0);" class="radio_control__btn"><span class="iconfont icon_next radio_control__icon" id="j_btn_gift">&#xe605;</span></a>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
