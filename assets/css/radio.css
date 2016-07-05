@@ -20,39 +20,39 @@ html, body {
   padding: 20px;
 }
 .wrap {
-	overflow: hidden;
-	width: 500px;
-	height: 245px;
+  overflow: hidden;
+  width: 500px;
+  height: 245px;
 }
 .wrap .album_show {
-	float: left;
-	margin-right: 25px;
+  float: left;
+  margin-right: 25px;
 }
 .album_show .album {
-	display: block;
-	width: 245px;
-	height: 245px;
+  display: block;
+  width: 245px;
+  height: 245px;
 }
 .wrap .radio_show {
-	padding: 10px 25px 10px 0px;
-	height: 225px;
-	position: relative;
+  padding: 10px 25px 10px 0px;
+  height: 225px;
+  position: relative;
 }
 .icon_pause {
-	position: absolute;
-	top: 0px;
-    right: 25px;
-    display: block;
-	text-decoration: none;
-	background: #9dd6c5;
-	color: #FFF;
+  position: absolute;
+  top: 0px;
+  right: 25px;
+  display: block;
+  text-decoration: none;
+  background: #9dd6c5;
+  color: #FFF;
 }
 .icon_pause:hover {
-	background: #b8ecdd;
+  background: #b8ecdd;
 }
 .radio_btn_pause {	
-    font-size: 25px;
-    font-weight: bold;        
+  font-size: 25px;
+  font-weight: bold;        
 }
 .radio_top .title{
   font-size: 22px;
@@ -135,6 +135,6 @@ html, body {
   font-size: 30px;
 }
 .icon_rubish {
-	position: absolute;
-	top: -3px;
+  position: absolute;
+  top: -3px;
 }
