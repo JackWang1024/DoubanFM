@@ -18,7 +18,7 @@
         <img class="album" src="https://img3.doubanio.com/lpic/s4498971.jpg" />
     </div>
     <div class="radio_show">
-        <a href="javascript:void(0);" class="icon_pause"><span class="iconfont radio_btn_pause">&#xe600;</span></a>
+        <a href="javascript:void(0);" class="icon_pause" id="j_pause"><span class="iconfont radio_btn_pause">&#xe600;</span></a>
         <div class="radio_top">
             <p class="title">Amy Diamond</p>
             <p class="desc">&lt; Music In Motion &gt; 2016</p>
@@ -44,8 +44,13 @@
             </li>
         </ul>
     </div>
+    <a class="mask_link" style="display: none" href="javascript:void(0);"><div class="mask">继续播放 &gt;</div></a>
 </div>
 <script type="text/javascript" src="assets/js/zepto.min.js"></script>
 <script type="text/javascript" src="assets/js/player.js"></script>
+<script type="text/javascript" src="assets/js/app.js"></script>
+<script type="text/javascript">
+ app.init();
+</script>
 </body>
 </html>

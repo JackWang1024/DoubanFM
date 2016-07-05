@@ -20,6 +20,7 @@ html, body {
   padding: 20px;
 }
 .wrap {
+  position: relative;
   overflow: hidden;
   width: 500px;
   height: 245px;
@@ -27,6 +28,22 @@ html, body {
 .wrap .album_show {
   float: left;
   margin-right: 25px;
+}
+.mask_link {
+  display: block;
+  color: #000;
+  text-decoration: none;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  right: 0;
+  width: 255px;
+  text-align: center;
+  opacity: 0.85;
+  background: #FFF;
+  line-height: 245px;
+  font-size: 13px;
+  font-family: Arial;
 }
 .album_show .album {
   display: block;

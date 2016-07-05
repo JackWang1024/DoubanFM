@@ -17,7 +17,7 @@
     var pro_move = false;
     var canplay = false;
 
-    var exports = global.player = {  
+    var exports = global.Player = {  
     	initResource: true,     
         pauseMusic: true,     
         init: function() {                                
