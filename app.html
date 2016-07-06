@@ -22,13 +22,16 @@
         <div class="radio_top">
             <p class="title">Amy Diamond</p>
             <p class="desc">&lt; Music In Motion &gt; 2016</p>
+            <a href="javascript:void(0);" class="radio_spec_btn radio_btn" id="j_btn_pause"><span class="iconfont icon_pause radio_spec__icon">&#xe609;</span></a>
         </div>
         <div class="radio_progress">
             <span class="radio_song__name" id="j_song_name">Unterstadt - Oberstadt - Zirkusstadt</span>
             <span class="radio_progress__time radio_progress__label" id="j_song_pro_crt">00:00</span>
             <div class="radio_progress__bar">
                 <span class="radio_progress__load" id="j_song_buf" style="width:0%;"></span>
-                <div class="radio_progress__now" id="j_song_prg_now" style="width:0%;"></div>
+                <div class="radio_progress__now" id="j_song_prg_now" style="width:0%;">
+                    <a href="javascript:void(0);" class="radio_progress__dot" id="j_song_pro_dot"><i></i></a>
+                </div>
             </div>
             <span class="radio_progress__total radio_progress__label" id="j_song_pro_total">00:00</span>
         </div>
@@ -38,10 +41,7 @@
             </li>
             <li class="radio_control__item">
                 <a href="javascript:void(0);" class="radio_control__btn radio_btn"><span class="iconfont icon_rubish radio_control__icon">&#xe606;</span></a>
-            </li>
-            <li class="radio_control__item">
-                <a href="javascript:void(0);" class="radio_control__btn radio_btn" id="j_btn_pause"><span class="iconfont icon_pause radio_control__icon">&#xe609;</span></a>
-            </li>
+            </li>            
             <li class="radio_control__item">
                 <a href="javascript:void(0);" class="radio_control__btn radio_btn" id="j_btn_next"><span class="iconfont icon_next radio_control__icon">&#xe605;</span></a>
             </li>
