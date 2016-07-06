@@ -3,47 +3,51 @@
  * @description 程序控制
  */
 
-;(function(global) {
-  
+;
+(function(global) {
+
   const remote = require('electron').remote;
 
   var exports = global.app = {
     init: function() {
+      Player.bind();
       exports.bind();
       exports.ajax.song_detail();
-    },    
+    },
     ajax: {
       song_detail: function() {
-      	$.ajax({
-          url : 'http://www.douban.com/j/app/radio/people',
+        $.ajax({
+          url: 'http://www.douban.com/j/app/radio/people',
           data: {
-          	app_name: 'radio_android',
-          	version: 100,
-          	type: 'n',
-          	channel: 1
+            app_name: 'radio_android',
+            version: 100,
+            type: 'n',
+            channel: 1
           },
-          success: function(ret) {    
-            console.log(ret);                     
+          success: function(ret) {
+            console.log(ret);
             var data = ret.song[0];
-            $('.album').attr('src', data.picture);     
-            $('.radio_top .title').text(data.artist);    
-            $('.radio_top .desc').html('&lt; ' + data.albumtitle +' &gt;' + ' ' + data.public_time);
-            $('#j_song_name').text(data.title);
-            $('.album_show a').attr('href', 'music.douban.com' + data.album);
+            exports.render(data);
             var play_url = data.url;
             Player.init();
             Player.play(play_url);
-          }, 
+          },
           error: function(err) {
             alert('请求数据失败');
           }
         });
       }
     },
-    bind: function() {            
-      $(document.body)
-      .on('click', '#j_btn_heart', function() {
-        $(this).css('color', '#f10303');
+    render: function(data) {
+      $('.album').attr('src', data.picture);
+      $('.radio_top .title').text(data.artist);
+      $('.radio_top .desc').html('&lt; ' + data.albumtitle + ' &gt;' + ' ' + data.public_time);
+      $('#j_song_name').text(data.title);
+      $('.album_show a').attr('href', 'music.douban.com' + data.album);
+    },
+    bind: function() {
+      $(document.body).on('click', '#j_btn_heart', function() {
+          $(this).css('color', '#f10303');
       })
       .on('click', '#j_btn_pause', function() {
         $(this).css('display', 'none');

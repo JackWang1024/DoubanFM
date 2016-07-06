@@ -80,12 +80,20 @@ html, body {
   font-family: Arial;
   margin-top: 30px;
   margin-bottom: 0px;
+  width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .radio_top .desc {
   font-size: 13px;
   font-family: sans-serif;
   margin-top: 0px;
   color: #808080;
+  width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .radio_top .radio_spec_btn {
   position: absolute;
