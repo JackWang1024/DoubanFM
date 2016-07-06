@@ -19,7 +19,6 @@
 
     var exports = global.Player = {  
     	initResource: true,     
-        pauseMusic: true,     
         init: function() {                                
 	        exports.reset();
 	        exports.initResource = false;                   
@@ -70,7 +69,7 @@
             });
 
             $('#audio').on('timeupdate',function() {
-                if(exports.pauseMusic) {
+                if(audio.paused) {
                     return ;
                 }
                 var duration = audio.duration;
@@ -80,7 +79,6 @@
                     $(pro).width(percent + '%');    
                 }                    
                 if(canplay) {
-                    // exports.showCrtLrc(currentTime);
                     var fcrtTime = exports.timeFormat(currentTime);
                     var fduration = exports.timeFormat(duration);
                     $(crt).html(fcrtTime);
@@ -97,15 +95,14 @@
                 $(crt).html('00:00');
                 $(pro).css('width', '0%');
                 if(audio) {          
-                    audio.pause();     
-                    $(playBtn).addClass('btn_play').removeClass('btn_pause');     
+                    audio.pause();
                 }    
+                app.ajax.song_detail();
             })
             .on('canplay', function() {
                 canplay = true;
-            });
-
-            document.getElementById('audio').addEventListener('error', function(e) {
+            })
+            .on('error', function(e) {
                 switch (e.target.error.code) {
                  case e.target.error.MEDIA_ERR_ABORTED:
                    alert('You aborted the video playback.');
@@ -123,11 +120,9 @@
                    alert('An unknown error occurred.');
                    break;
                }
-            }, true);
-
+            })
         },
-        reset: function() {                
-            exports.pauseMusic = true;   
+        reset: function() {
             if(audio) {          
                 audio.pause();
                 $(playBtn).removeClass('btn_pause').addClass('btn_play');   
@@ -155,17 +150,11 @@
                 }
             },1000);
         },
-        play: function() {
-            if(!exports.initResource) {       
-                audio.src = $('.radio_show__item.crt').attr('data-src');
-                exports.initResource = true;
-                exports.pauseMusic = false;
-                audio.play();              
-                $(playBtn).removeClass('btn_play').addClass('btn_pause');                                                                                 
-            } else {
-                audio.play();
-                $(playBtn).removeClass('btn_play').addClass('btn_pause');
-            }                
+        play: function(src) {
+            if(src) {
+                audio.src = src;    
+            }            
+            audio.play();           
         },
         pause: function() {
             if(audio.src && typeof(audio.src) != 'undefined') {                   

@@ -11,14 +11,14 @@
     <meta name="applicable-device" content="mobile">
     <link rel="stylesheet" type="text/css" href="assets/css/radio.css">
 </head>
-<body>
+<body style="-webkit-app-region: drag">
 <audio id="audio" style="display: none"></audio>
 <div class="wrap">
     <div class="album_show">
-        <img class="album" src="https://img3.doubanio.com/lpic/s4498971.jpg" />
+        <a href="javascript:void(0);" target="_target"><img class="album" src="https://img3.doubanio.com/lpic/s4498971.jpg" /></a>
     </div>
     <div class="radio_show">
-        <a href="javascript:void(0);" class="icon_pause" id="j_pause"><span class="iconfont radio_btn_pause">&#xe600;</span></a>
+        <a href="javascript:void(0);" class="icon_close radio_btn" id="j_btn_close"><span class="iconfont radio_btn_close">&#xe607;</span></a>
         <div class="radio_top">
             <p class="title">Amy Diamond</p>
             <p class="desc">&lt; Music In Motion &gt; 2016</p>
@@ -27,29 +27,33 @@
             <span class="radio_song__name" id="j_song_name">Unterstadt - Oberstadt - Zirkusstadt</span>
             <span class="radio_progress__time radio_progress__label" id="j_song_pro_crt">00:00</span>
             <div class="radio_progress__bar">
-                <span class="radio_progress__load" id="j_song_buf" style="width:70%;"></span>
-                <div class="radio_progress__now" id="j_song_prg_now" style="width:30%;"></div>
+                <span class="radio_progress__load" id="j_song_buf" style="width:0%;"></span>
+                <div class="radio_progress__now" id="j_song_prg_now" style="width:0%;"></div>
             </div>
             <span class="radio_progress__total radio_progress__label" id="j_song_pro_total">00:00</span>
         </div>
         <ul class="radio_control">
-            <li class="radio_control__item">
-                <a href="javascript:void(0);" class="radio_control__btn"><span class="iconfont icon_heart radio_control__icon" id="j_btn_play">&#xe603;</span></a>
+            <li class="radio_control__item" style="padding-left: 0px">
+                <a href="javascript:void(0);" class="radio_control__btn radio_btn" id="j_btn_heart"><span class="iconfont icon_heart radio_control__icon">&#xe603;</span></a>
             </li>
             <li class="radio_control__item">
-                <a href="javascript:void(0);" class="radio_control__btn"><span class="iconfont icon_rubish radio_control__icon" id="j_btn_kge">&#xe606;</span></a>
+                <a href="javascript:void(0);" class="radio_control__btn radio_btn"><span class="iconfont icon_rubish radio_control__icon">&#xe606;</span></a>
             </li>
             <li class="radio_control__item">
-                <a href="javascript:void(0);" class="radio_control__btn"><span class="iconfont icon_next radio_control__icon" id="j_btn_gift">&#xe605;</span></a>
+                <a href="javascript:void(0);" class="radio_control__btn radio_btn" id="j_btn_pause"><span class="iconfont icon_pause radio_control__icon">&#xe609;</span></a>
+            </li>
+            <li class="radio_control__item">
+                <a href="javascript:void(0);" class="radio_control__btn radio_btn" id="j_btn_next"><span class="iconfont icon_next radio_control__icon">&#xe605;</span></a>
             </li>
         </ul>
     </div>
-    <a class="mask_link" style="display: none" href="javascript:void(0);"><div class="mask">继续播放 &gt;</div></a>
+    <a class="mask_link radio_btn" style="display: none" href="javascript:void(0);"><div class="mask">继续播放 &gt;</div></a>
 </div>
 <script type="text/javascript" src="assets/js/zepto.min.js"></script>
 <script type="text/javascript" src="assets/js/player.js"></script>
 <script type="text/javascript" src="assets/js/app.js"></script>
 <script type="text/javascript">
+ Player.bind();
  app.init();
 </script>
 </body>

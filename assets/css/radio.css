@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'iconfont';
-  src: url('http://at.alicdn.com/t/font_1467718015_0010753.eot'); /* IE9*/
-  src: url('http://at.alicdn.com/t/font_1467718015_0010753.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('http://at.alicdn.com/t/font_1467718015_0010753.woff') format('woff'), /* chrome、firefox */
-  url('http://at.alicdn.com/t/font_1467718015_0010753.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
-  url('http://at.alicdn.com/t/font_1467718015_0010753.svg#iconfont') format('svg'); /* iOS 4.1- */
+  src: url('http://at.alicdn.com/t/font_1467772060_9553173.eot'); /* IE9*/
+  src: url('http://at.alicdn.com/t/font_1467772060_9553173.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('http://at.alicdn.com/t/font_1467772060_9553173.woff') format('woff'), /* chrome、firefox */
+  url('http://at.alicdn.com/t/font_1467772060_9553173.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url('http://at.alicdn.com/t/font_1467772060_9553173.svg#iconfont') format('svg'); /* iOS 4.1- */
 }
 .iconfont {
   font-family:"iconfont" !important;
@@ -17,7 +17,6 @@
 
 html, body {
   margin: 0;
-  padding: 20px;
 }
 .wrap {
   position: relative;
@@ -45,6 +44,9 @@ html, body {
   font-size: 13px;
   font-family: Arial;
 }
+.album_show a {
+  display: block;
+}
 .album_show .album {
   display: block;
   width: 245px;
@@ -54,22 +56,21 @@ html, body {
   padding: 10px 25px 10px 0px;
   height: 225px;
   position: relative;
+  float: right;
 }
-.icon_pause {
-  position: absolute;
-  top: 0px;
-  right: 25px;
-  display: block;
+.icon_close {
   text-decoration: none;
-  background: #9dd6c5;
-  color: #FFF;
+  color: #000;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  transition: all 0.5s;
 }
-.icon_pause:hover {
-  background: #b8ecdd;
+.icon_close:hover {
+	transform: rotate(360deg);
 }
-.radio_btn_pause {	
-  font-size: 25px;
-  font-weight: bold;        
+.radio_btn_close {	
+  font-size: 20px;     
 }
 .radio_top .title{
   font-size: 22px;
@@ -144,6 +145,7 @@ html, body {
   height: 30px;
   text-decoration: none;
   color: #000;
+  transition: all 0.5s;
 }         
 .radio_control__item span:hover {
   color: #4e4e4e;
@@ -154,4 +156,7 @@ html, body {
 .icon_rubish {
   position: absolute;
   top: -3px;
+}
+.radio_btn {
+  -webkit-app-region: no-drag;
 }
