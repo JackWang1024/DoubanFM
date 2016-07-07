@@ -25,6 +25,26 @@ html, body {
   width: 500px;
   height: 245px;
 }
+.wrap .icon_close {
+  text-decoration: none;
+  color: #000;
+  position: absolute;
+  top: 0px;
+  left: 25px;
+  transition: all 0.5s;
+  display: block;  
+  text-align: center;
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  z-index: 101;
+}
+.icon_close:hover {
+  /*background: #118e69;*/
+}
+.icon_close .radio_btn_close {  
+  font-size: 20px;     
+}
 .wrap .album_show {
   position: relative;
   float: left;
@@ -82,26 +102,6 @@ html, body {
   height: 225px;
   position: relative;
   float: right;
-}
-.icon_close {
-  text-decoration: none;
-  color: #FFF;
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  transition: all 0.5s;
-  background: #6cd8b8;
-  display: block;  
-  text-align: center;
-  width: 25px;
-  height: 25px;
-  line-height: 25px;
-}
-.icon_close:hover {
-	background: #118e69;
-}
-.radio_btn_close {	
-  font-size: 16px;     
 }
 .radio_top {
   position: relative;
@@ -247,7 +247,7 @@ html, body {
   right: 25px;
   text-align: center;
   font-size: 10px;
-  color: #ffdddd;
+  color: #fff;
   font-family: sans-serif;
   line-height: 16px;
   cursor: pointer;
@@ -277,4 +277,7 @@ html, body {
   color: #FFF;
   top: -15px;
   left: 26px;
+}
+.channel_control:hover {
+  border-top: 16px solid #000;
 }
