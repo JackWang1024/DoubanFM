@@ -1,11 +1,12 @@
 @font-face {
   font-family: 'iconfont';
-  src: url('http://at.alicdn.com/t/font_1467772060_9553173.eot'); /* IE9*/
-  src: url('http://at.alicdn.com/t/font_1467772060_9553173.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('http://at.alicdn.com/t/font_1467772060_9553173.woff') format('woff'), /* chrome、firefox */
-  url('http://at.alicdn.com/t/font_1467772060_9553173.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
-  url('http://at.alicdn.com/t/font_1467772060_9553173.svg#iconfont') format('svg'); /* iOS 4.1- */
-}
+  src: url('http://at.alicdn.com/t/font_1467820529_4208822.eot'); /* IE9*/
+  src: url('http://at.alicdn.com/t/font_1467820529_4208822.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('http://at.alicdn.com/t/font_1467820529_4208822.woff') format('woff'), /* chrome、firefox */
+  url('http://at.alicdn.com/t/font_1467820529_4208822.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url('http://at.alicdn.com/t/font_1467820529_4208822.svg#iconfont') format('svg'); /* iOS 4.1- */
+}          
+      
 .iconfont {
   font-family:"iconfont" !important;
   font-size:16px;
@@ -60,17 +61,23 @@ html, body {
 }
 .icon_close {
   text-decoration: none;
-  color: #000;
+  color: #FFF;
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: 0px;
+  right: 0px;
   transition: all 0.5s;
+  background: #6cd8b8;
+  display: block;  
+  text-align: center;
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
 }
 .icon_close:hover {
-	transform: rotate(360deg);
+	background: #118e69;
 }
 .radio_btn_close {	
-  font-size: 20px;     
+  font-size: 16px;     
 }
 .radio_top {
   position: relative;
@@ -99,7 +106,12 @@ html, body {
   position: absolute;
   text-decoration: none;
   color: #000;
-  top: 0px;
+  top: 5px;  
+}
+.radio_top .radio_btn_pause {
+  right: 22px;
+}
+.radio_top .radio_btn_set {
   right: 0px;
 }
 .radio_top .radio_spec__icon {
@@ -166,7 +178,7 @@ html, body {
   padding: 0;
   position: absolute;
   right: 25px;
-  bottom: 25px;
+  bottom: 34px;
 }
 .radio_song__name {
   position: absolute;
@@ -199,4 +211,46 @@ html, body {
 }
 .radio_btn {
   -webkit-app-region: no-drag;
+}
+.lrc_control { 
+  position: absolute;
+  border-bottom: 16px solid #ff4343;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  height: 0;
+  width: 80px;
+  bottom: 0px;
+  right: 25px;
+  text-align: center;
+  font-size: 10px;
+  color: #ffdddd;
+  font-family: sans-serif;
+  line-height: 16px;
+  cursor: pointer;
+}
+.lrc_control:hover {
+  color: #FFF;
+  border-bottom: 16px solid #795757;
+}
+.channel_control {
+  position: absolute;
+  border-top: 16px solid #4a4848;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  height: 0;
+  width: 80px;
+  top: 0px;
+  right: 25px;
+  text-align: center;
+  font-size: 10px;
+  color: #ffdddd;
+  font-family: sans-serif;
+  line-height: 16px;
+  cursor: pointer;  
+}
+.channel_control span {
+  position: absolute;
+  color: #FFF;
+  top: -15px;
+  left: 26px;
 }

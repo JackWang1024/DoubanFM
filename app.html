@@ -18,11 +18,15 @@
         <img class="album" src="https://img3.doubanio.com/lpic/s4498971.jpg" />
     </div>
     <div class="radio_show">
-        <a href="javascript:void(0);" class="icon_close radio_btn" id="j_btn_close"><span class="iconfont radio_btn_close">&#xe607;</span></a>
+        <div class="channel_control">
+            <span>频&nbsp;&nbsp;&nbsp;&nbsp;道</span>
+        </div>
+        <a href="javascript:void(0);" style="display:none;" class="icon_close radio_btn" id="j_btn_close"><span class="iconfont radio_btn_close">&#xe607;</span></a>
         <div class="radio_top">
             <p class="title"></p>
             <p class="desc"></p>
-            <a href="javascript:void(0);" class="radio_spec_btn radio_btn" id="j_btn_pause"><span class="iconfont icon_pause radio_spec__icon">&#xe609;</span></a>
+            <a href="javascript:void(0);" class="radio_spec_btn radio_btn radio_btn_pause" id="j_btn_pause"><span class="iconfont icon_pause radio_spec__icon">&#xe609;</span></a>
+            <a href="javascript:void(0);" class="radio_spec_btn radio_btn radio_btn_set" id="j_btn_set"><span class="iconfont icon_set radio_spec__icon">&#xe60b;</span></a>
         </div>
         <div class="radio_progress radio_btn">
             <span class="radio_song__name" id="j_song_name"></span>
@@ -46,6 +50,7 @@
                 <a href="javascript:void(0);" class="radio_control__btn radio_btn" id="j_btn_next"><span class="iconfont icon_next radio_control__icon">&#xe605;</span></a>
             </li>
         </ul>
+        <div class="lrc_control"><span>歌&nbsp;&nbsp;&nbsp;&nbsp;词</span></div>
     </div>
     <a class="mask_link radio_btn" style="display: none" href="javascript:void(0);"><div class="mask">继续播放 &gt;</div></a>
 </div>
