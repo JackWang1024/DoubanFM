@@ -26,6 +26,7 @@ html, body {
   height: 245px;
 }
 .wrap .album_show {
+  position: relative;
   float: left;
   margin-right: 25px;
 }
@@ -47,6 +48,29 @@ html, body {
 }
 .album_show a {
   display: block;
+}
+.album_show .album_mask {
+  position: absolute;
+  width: 245px;
+  height: 245px;
+  top: 0;
+  left: 0;
+  text-align: center;
+  overflow: hidden;
+  background: #000;
+  color: #FFF;
+  z-index: 100;
+  opacity: 0.65;
+  font-size: 13px;
+  font-family: sans-serif;
+  transition: all 0.5s;
+}
+.album_show .album_mask p {
+  margin-top: 120px;
+  line-height: 20px;
+}
+.album_show .album_mask.hidden {
+  opacity: 0;
 }
 .album_show .album {
   display: block;

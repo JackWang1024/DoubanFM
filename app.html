@@ -13,8 +13,12 @@
 </head>
 <body style="-webkit-app-region: drag">
 <audio id="audio" style="display: none"></audio>
+<ul id="j_lrc_list" style="display: none;"></ul>
 <div class="wrap">
     <div class="album_show">
+        <div class="album_mask hidden">
+            <p>电灯胆，哦哦哦~~</p>
+        </div>
         <img class="album" src="https://img3.doubanio.com/lpic/s4498971.jpg" />
     </div>
     <div class="radio_show">
@@ -50,7 +54,7 @@
                 <a href="javascript:void(0);" class="radio_control__btn radio_btn" id="j_btn_next"><span class="iconfont icon_next radio_control__icon">&#xe605;</span></a>
             </li>
         </ul>
-        <div class="lrc_control"><span>歌&nbsp;&nbsp;&nbsp;&nbsp;词</span></div>
+        <div class="lrc_control" data-sid="" data-ssid="" id="j_btn_lrc"><span>歌&nbsp;&nbsp;&nbsp;&nbsp;词</span></div>
     </div>
     <a class="mask_link radio_btn" style="display: none" href="javascript:void(0);"><div class="mask">继续播放 &gt;</div></a>
 </div>

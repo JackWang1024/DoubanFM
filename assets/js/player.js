@@ -80,6 +80,7 @@
         $(pro).width(percent + '%');
       }
       if (canplay) {
+        exports.showCrtLrc(currentTime);
         var fcrtTime = exports.timeFormat(currentTime);
         var fduration = exports.timeFormat(duration);
         $(crt).html(fcrtTime);
@@ -171,15 +172,15 @@
         sec = sec >= 10 ? sec : '0' + sec;
         return min + ':' + sec;
     },
-    getLrcData: function(lrcData) {
-        var lrc = lrcData.data.lyric,
+    getLrcHtml: function(lrcData) {
+        var lrc = lrcData.lyric,
             listStr = '';
-        var str = lrc.replace(/\[(\d+):(\d+).(\d+)\]([^\r\n]+|)/g, function($0, $1, $2, $3, $4) {
+        var htm = lrc.replace(/\[(\d+):(\d+).(\d+)\]([^\r\n]+|)/g, function($0, $1, $2, $3, $4) {
             var sec = parseInt($1 * 60) + parseInt($2);
             listStr += '<li data-time="' + sec + '">' + $4 + '</li>';
             return '<li data-time="' + sec + '">' + $4 + '</li>';
-        });
-        $('#j_lrc_list').html(listStr);
+        });        
+        return htm;
     },
     showCrtLrc: function(time) {
         var lis = $('#j_lrc_list li'),
@@ -196,7 +197,7 @@
             el = lis.eq(lis.length - 1);
         }
         if (el && el.length > 0) {
-            $('.radio_show__item.crt .radio_show__lyric p').text(el.text());
+            $('.album_mask p').text(el.text());
         }
     }
   }

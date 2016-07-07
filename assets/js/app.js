@@ -25,9 +25,12 @@
             channel: 1
           },
           success: function(ret) {
-            console.log(ret);
+            // console.log(ret);
+
             var data = ret.song[0];
+            exports.ajax.lrc(data.sid, data.ssid);
             exports.render(data);
+            
             var play_url = data.url;
             Player.init();
             Player.play(play_url);
@@ -36,6 +39,23 @@
             alert('请求数据失败');
           }
         });
+      },
+      lrc: function(sid, ssid) {
+       $.ajax({
+        url: 'http://api.douban.com/v2/fm/lyric',
+        data: {
+          method: 'POST',
+          sid: sid,
+          ssid: ssid
+        },
+        success: function(ret) {
+          console.log(ret.lyric);
+          $('#j_lrc_list').html(Player.getLrcHtml(ret));
+        },
+        error: function(err) {
+          console.log(err);
+        }
+       })
       }
     },
     render: function(data) {
@@ -44,6 +64,8 @@
       $('.radio_top .desc').html('&lt; ' + data.albumtitle + ' &gt;' + ' ' + data.public_time);
       $('#j_song_name').text(data.title);
       $('.album_show a').attr('href', 'music.douban.com' + data.album);
+      $('.lrc_control').attr('data-sid', data.sid);
+      $('.lrc_control').attr('data-ssid', data.ssid);
     },
     bind: function() {
       $(document.body).on('click', '#j_btn_heart', function() {
@@ -65,6 +87,9 @@
       .on('click', '#j_btn_close', function() {
         var win = remote.getCurrentWindow();
         win.close();
+      })
+      .on('click', '#j_btn_lrc', function() {                
+        $('.album_mask').toggleClass('hidden');
       });
     }
 
