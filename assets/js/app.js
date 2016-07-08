@@ -8,9 +8,19 @@
 
   const remote = require('electron').remote;
 
+  var player = new Player({
+        bar: '.radio_progress__bar',
+        buf: '#j_song_buf',
+        pro: '#j_song_prg_now',
+        crt: '#j_song_pro_crt',
+        dot: '#j_song_pro_dot',
+        total: '#j_song_pro_total',
+        lrc_li: '#j_lrc_list li',
+        lrc_text: '.album_mask p'
+      });
+
   var exports = global.app = {
-    init: function() {
-      Player.bind();
+    init: function() {       
       exports.bind();
       exports.ajax.song_detail();
     },
@@ -32,8 +42,7 @@
             exports.render(data);
             
             var play_url = data.url;
-            Player.init();
-            Player.play(play_url);
+            player.play(play_url);
           },
           error: function(err) {
             alert('请求数据失败');
@@ -50,7 +59,7 @@
         },
         success: function(ret) {
           console.log(ret.lyric);
-          $('#j_lrc_list').html(Player.getLrcHtml(ret));
+          $('#j_lrc_list').html(player.getLrcHtml(ret));
         },
         error: function(err) {
           console.log(err);
@@ -74,7 +83,7 @@
       .on('click', '#j_btn_pause', function() {
         $(this).css('display', 'none');
         $('.mask_link').css('display', 'block');
-        Player.pause();
+        player.pause();
       })
       .on('click', '#j_btn_next', function() {
         exports.ajax.song_detail();
@@ -82,7 +91,7 @@
       .on('click', '.mask_link', function() {
         $(this).css('display', 'none');
         $('#j_btn_pause').css('display', 'block');
-        Player.play();
+        player.play();
       })
       .on('click', '#j_btn_close', function() {
         var win = remote.getCurrentWindow();

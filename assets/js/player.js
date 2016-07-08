@@ -1,37 +1,48 @@
 /**
  * @author boxizen
  * @description 音乐播放
+ * @param {object} config
+ * @param {string} opts.bar   进度条
+ * @param {string} opts.buf   缓存进度
+ * @param {string} opts.pro   当前进度
+ * @param {string} opts.dot   当前进度原点
+ * @param {string} opts.crt   当前时间文本
+ * @param {string} opts.total 总时长文本
+ *
  */
+
 ;
 (function(global) {
-  
-  var audio = $('audio')[0], bufferTimer;
-  var bar = '.radio_progress__bar';
-    buf = '#j_song_buf',
-    pro = '#j_song_prg_now',
-    crt = '#j_song_pro_crt',
-    dot = '#j_song_pro_dot',
-    total = '#j_song_pro_total',
-    logger = console;
+    
+  function Player(config) {
+    this.config = config;
+    this.audio = $('audio')[0];
+    this.init();
+  }
 
-  var pro_move = false;
-  var canplay = false;
-
-  var exports = global.Player = {
-    initResource: true,
-    init: function() {
-      exports.reset();
-      exports.initResource = false;
+  Player.prototype = {
+    init: function() {      
+      this.bind();
     },
     bind: function() {
+      
+      var self = this, audio = this.audio;
+      var bar = self.config.bar, 
+          dot = self.config.dot, 
+          pro = self.config.pro, 
+          buf = self.config.buf, 
+          crt = self.config.crt, 
+          total = self.config.total;
       var params = {
-        pro_width: $(bar).width(),
-        pro_down: false,
-        initX: 0,
-        startX: 0,
-        deltaX: 0,
-        ratio: 0
-      };
+          pro_width: $(bar).width(),
+          pro_down: false,
+          pro_move: false,
+          canplay: false,
+          initX: 0,
+          startX: 0,
+          deltaX: 0,
+          ratio: 0
+        };
             
     $(document.body).on('mousedown', dot, function(e) {
       params.pro_down = true;
@@ -40,7 +51,7 @@
     })
     .on('mousemove', function(e) {
       if (params.pro_down && audio.duration) {
-        pro_move = true;
+        params.pro_move = true;
         params.moveX = e.pageX;
         params.deltaX = params.moveX - params.startX;
 
@@ -50,9 +61,9 @@
       }
     })
     .on('mouseup', function() {
-      if (pro_move && params.pro_down) {
+      if (params.pro_move && params.pro_down) {
         params.pro_down = false;
-        pro_move = false;
+        params.pro_move = false;
           if (audio && audio.duration) {
             audio.currentTime = params.ratio * audio.duration;
           }
@@ -76,13 +87,13 @@
       var duration = audio.duration;
       var currentTime = audio.currentTime;
       var percent = currentTime / duration * 100;
-      if (!pro_move) {
+      if (!params.pro_move) {
         $(pro).width(percent + '%');
       }
-      if (canplay) {
-        exports.showCrtLrc(currentTime);
-        var fcrtTime = exports.timeFormat(currentTime);
-        var fduration = exports.timeFormat(duration);
+      if (params.canplay) {
+        self.showCrtLrc(currentTime);
+        var fcrtTime = self.timeFormat(currentTime);
+        var fduration = self.timeFormat(duration);
         $(crt).html(fcrtTime);
         $(total).html(fduration);
         try {
@@ -102,7 +113,7 @@
         app.ajax.song_detail();
     })
     .on('canplay', function() {
-        canplay = true;
+        params.canplay = true;
     })
     .on('error', function(e) {
       switch (e.target.error.code) {
@@ -125,39 +136,30 @@
     })
    },
    reset: function() {
+     var audio = this.audio, 
+         crt = this.config.crt, 
+         total = this.config.total, 
+         pro = this.config.pro, 
+         buf = this.config.buf;
+
      if (audio) {
        audio.pause();
      }
+
      $(crt).html('00:00');
      $(total).html('00:00');
      $(pro).css('width', '0%');
      $(buf).css('width', '0%');
-    },
-   buffer: function() {
-     clearInterval(bufferTimer);
-     bufferTimer = setInterval(function() {
-       try {
-         var bufferIndex = audio.buffered.length;
-         if (bufferIndex != 0) {
-           var percent = audio.buffered.end(bufferIndex - 1) / audio.duration * 100;
-           $(buf).width(percent + '%');
-           if (Math.abs(audio.duration - audio.buffered.end(bufferIndex - 1)) < 1) {
-             clearInterval(bufferTimer);
-           }
-         }
-        } catch (ex) {
-          logger.error('[Exception]: ' + ex);
-          clearInterval(bufferTimer);
-        }
-      }, 1000);
    },
    play: function(src) {
+     var audio = this.audio;
      if (src) {
        audio.src = src;
      }
      audio.play();
    },
    pause: function() {
+     var audio = this.audio;
      if (audio.src && typeof(audio.src) != 'undefined') {
        audio.pause();
      }
@@ -173,19 +175,16 @@
      return min + ':' + sec;
    },
    getLrcHtml: function(lrcData) {
-     var lrc = lrcData.lyric,
-       listStr = '';
+     var lrc = lrcData.lyric, listStr = '';     
      var htm = lrc.replace(/\[(\d+):(\d+).(\d+)\]([^\r\n]+|)/g, function($0, $1, $2, $3, $4) {
-     var sec = parseInt($1 * 60) + parseInt($2);
-     listStr += '<li data-time="' + sec + '">' + $4 + '</li>';
-     return '<li data-time="' + sec + '">' + $4 + '</li>';
+       var sec = parseInt($1 * 60) + parseInt($2);
+       listStr += '<li data-time="' + sec + '">' + $4 + '</li>';
+       return '<li data-time="' + sec + '">' + $4 + '</li>';
      });        
      return htm;
    },
    showCrtLrc: function(time) {
-     var lis = $('#j_lrc_list li'),
-       el;
-
+     var lis = $(this.config.lrc_li), el;
      for (var i = 0; i < lis.length; i++) {
        var li = lis.eq(i);
        if (time < li.attr('data-time')) {
@@ -197,8 +196,9 @@
        el = lis.eq(lis.length - 1);
      }
      if (el && el.length > 0) {
-       $('.album_mask p').text(el.text());
+       $(this.config.lrc_text).text(el.text());
      }
    }
   }
+  global.Player = Player;
 })(window);
