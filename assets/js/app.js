@@ -35,12 +35,11 @@
             channel: 1
           },
           success: function(ret) {
-            // console.log(ret);
-
+            // render song detail
             var data = ret.song[0];
             exports.ajax.lrc(data.sid, data.ssid);
             exports.render(data);
-            
+            // play song
             var play_url = data.url;
             player.play(play_url);
           },

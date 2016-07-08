@@ -13,7 +13,7 @@
 
 ;
 (function(global) {
-    
+
   function Player(config) {
     this.config = config;
     this.audio = $('audio')[0];
@@ -80,7 +80,7 @@
       audio.currentTime = params.ratio * audio.duration;
     });
 
-    $('#audio').on('timeupdate', function() {
+    $(audio).on('timeupdate', function() {
       if (audio.paused) {
         return;
       }
