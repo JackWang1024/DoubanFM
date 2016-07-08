@@ -76,6 +76,11 @@
       $('.lrc_control').attr('data-ssid', data.ssid);
     },
     bind: function() {
+      $('audio').on('ended', function() {
+        $('#j_song_pro_crt').html('00:00');
+        $('#j_song_prg_now').css('width', '0%');
+        exports.ajax.song_detail();
+      });
       $(document.body).on('click', '#j_btn_heart', function() {
           $(this).css('color', '#f10303');
       })

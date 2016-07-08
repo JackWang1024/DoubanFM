@@ -103,15 +103,7 @@
           console.log(err);
         }
       }
-    })
-    .on('ended', function() {
-        $(crt).html('00:00');
-        $(pro).css('width', '0%');
-        if (audio) {
-            audio.pause();
-        }
-        app.ajax.song_detail();
-    })
+    })    
     .on('canplay', function() {
         params.canplay = true;
     })
