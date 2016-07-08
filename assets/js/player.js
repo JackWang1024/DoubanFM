@@ -124,81 +124,81 @@
         }
     })
    },
-    reset: function() {
-        if (audio) {
-            audio.pause();
+   reset: function() {
+     if (audio) {
+       audio.pause();
+     }
+     $(crt).html('00:00');
+     $(total).html('00:00');
+     $(pro).css('width', '0%');
+     $(buf).css('width', '0%');
+    },
+   buffer: function() {
+     clearInterval(bufferTimer);
+     bufferTimer = setInterval(function() {
+       try {
+         var bufferIndex = audio.buffered.length;
+         if (bufferIndex != 0) {
+           var percent = audio.buffered.end(bufferIndex - 1) / audio.duration * 100;
+           $(buf).width(percent + '%');
+           if (Math.abs(audio.duration - audio.buffered.end(bufferIndex - 1)) < 1) {
+             clearInterval(bufferTimer);
+           }
+         }
+        } catch (ex) {
+          logger.error('[Exception]: ' + ex);
+          clearInterval(bufferTimer);
         }
-        $(crt).html('00:00');
-        $(total).html('00:00');
-        $(pro).css('width', '0%');
-        $(buf).css('width', '0%');
-    },
-    buffer: function() {
-        clearInterval(bufferTimer);
-        bufferTimer = setInterval(function() {
-            try {
-                var bufferIndex = audio.buffered.length;
-                if (bufferIndex != 0) {
-                    var percent = audio.buffered.end(bufferIndex - 1) / audio.duration * 100;
-                    $(buf).width(percent + '%');
-                    if (Math.abs(audio.duration - audio.buffered.end(bufferIndex - 1)) < 1) {
-                        clearInterval(bufferTimer);
-                    }
-                }
-            } catch (ex) {
-                logger.error('[Exception]: ' + ex);
-                clearInterval(bufferTimer);
-            }
-        }, 1000);
-    },
-    play: function(src) {
-        if (src) {
-            audio.src = src;
-        }
-        audio.play();
-    },
-    pause: function() {
-        if (audio.src && typeof(audio.src) != 'undefined') {
-            audio.pause();
-        }
-    },
-    timeFormat: function(time) {
-        if (isNaN(time)) {
-            return '00:00';
-        }
-        var min = parseInt(time / 60);
-        var sec = parseInt(time % 60);
-        min = min >= 10 ? min : '0' + min;
-        sec = sec >= 10 ? sec : '0' + sec;
-        return min + ':' + sec;
-    },
-    getLrcHtml: function(lrcData) {
-        var lrc = lrcData.lyric,
-            listStr = '';
-        var htm = lrc.replace(/\[(\d+):(\d+).(\d+)\]([^\r\n]+|)/g, function($0, $1, $2, $3, $4) {
-            var sec = parseInt($1 * 60) + parseInt($2);
-            listStr += '<li data-time="' + sec + '">' + $4 + '</li>';
-            return '<li data-time="' + sec + '">' + $4 + '</li>';
-        });        
-        return htm;
-    },
-    showCrtLrc: function(time) {
-        var lis = $('#j_lrc_list li'),
-            el;
+      }, 1000);
+   },
+   play: function(src) {
+     if (src) {
+       audio.src = src;
+     }
+     audio.play();
+   },
+   pause: function() {
+     if (audio.src && typeof(audio.src) != 'undefined') {
+       audio.pause();
+     }
+   },
+   timeFormat: function(time) {
+     if (isNaN(time)) {
+       return '00:00';
+     }
+     var min = parseInt(time / 60);
+     var sec = parseInt(time % 60);
+     min = min >= 10 ? min : '0' + min;
+     sec = sec >= 10 ? sec : '0' + sec;
+     return min + ':' + sec;
+   },
+   getLrcHtml: function(lrcData) {
+     var lrc = lrcData.lyric,
+       listStr = '';
+     var htm = lrc.replace(/\[(\d+):(\d+).(\d+)\]([^\r\n]+|)/g, function($0, $1, $2, $3, $4) {
+     var sec = parseInt($1 * 60) + parseInt($2);
+     listStr += '<li data-time="' + sec + '">' + $4 + '</li>';
+     return '<li data-time="' + sec + '">' + $4 + '</li>';
+     });        
+     return htm;
+   },
+   showCrtLrc: function(time) {
+     var lis = $('#j_lrc_list li'),
+       el;
 
-        for (var i = 0; i < lis.length; i++) {
-            var li = lis.eq(i);
-            if (time < li.attr('data-time')) {
-                el = lis.eq(Math.max(0, i - 1));
-                break;
-            }
-        }
-        if (time > lis.eq(lis.length - 1).attr('data-time')) {
-            el = lis.eq(lis.length - 1);
-        }
-        if (el && el.length > 0) {
-            $('.album_mask p').text(el.text());
-        }
-    }
+     for (var i = 0; i < lis.length; i++) {
+       var li = lis.eq(i);
+       if (time < li.attr('data-time')) {
+         el = lis.eq(Math.max(0, i - 1));
+         break;
+       }
+     }
+     if (time > lis.eq(lis.length - 1).attr('data-time')) {
+       el = lis.eq(lis.length - 1);
+     }
+     if (el && el.length > 0) {
+       $('.album_mask p').text(el.text());
+     }
+   }
   }
 })(window);
