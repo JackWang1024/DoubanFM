@@ -18,14 +18,16 @@
         lrc_li: '#j_lrc_list li',
         lrc_text: '.album_mask p'
       });
+  
+  var loginData = {};
 
   var exports = global.app = {
     init: function() {       
       exports.bind();
-      exports.ajax.song_detail();
+      exports.ajax.song();
     },
     ajax: {
-      song_detail: function() {
+      song: function() {
         $.ajax({
           url: 'http://www.douban.com/j/app/radio/people',
           data: {
@@ -64,6 +66,39 @@
           console.log(err);
         }
        })
+      },
+      behaviour: function(options) {
+        $.ajax({
+          url: 'http://www.douban.com/j/app/radio/people',
+          data: options,
+          success: function(ret) {
+            console.info(ret);
+          },
+          error: function(err) {
+            console.error(err);
+          }
+        });
+      },
+      login: function(options) {
+        $.ajax({
+          url: 'http://www.douban.com/j/app/login',
+          data: options,
+          success: function(ret) {
+            if(ret.r == 0) {
+              loginData = {
+                user_id : ret.user_id;
+                token : ret.token;
+                expire : ret.expire;
+                user_name : ret.user_name;
+                email : ret.email;
+              }
+            }
+            console.info(ret);
+          },
+          error: function(err) {
+            console.error(err);
+          }
+        });
       }
     },
     render: function(data) {
@@ -79,7 +114,7 @@
       $('audio').on('ended', function() {
         $('#j_song_pro_crt').html('00:00');
         $('#j_song_prg_now').css('width', '0%');
-        exports.ajax.song_detail();
+        exports.ajax.song();
       });
       $(document.body).on('click', '#j_btn_heart', function() {
           $(this).css('color', '#f10303');
@@ -90,7 +125,7 @@
         player.pause();
       })
       .on('click', '#j_btn_next', function() {
-        exports.ajax.song_detail();
+        exports.ajax.song();
       })
       .on('click', '.mask_link', function() {
         $(this).css('display', 'none');
