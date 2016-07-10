@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
-    <meta charset="utf-8">
-    <title>豆瓣FM电台</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" />
+  <meta charset="utf-8">
+  <title>豆瓣FM电台</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" />
     <meta name="format-detection" content="telephone=no">
     <meta name="author" content="boxizen">
     <meta name="Copyright" content="boxizen">
@@ -15,7 +15,6 @@
 <audio id="audio" style="display: none"></audio>
 <ul id="j_lrc_list" style="display: none;"></ul>
 <div class="wrap">
-    <a href="javascript:void(0);" style="display: none" class="icon_close radio_btn" id="j_btn_close"><span class="iconfont radio_btn_close">&#xe607;</span></a>
     <div class="album_show">
         <div class="album_mask hidden"><p></p></div>
         <img class="album" src="https://img3.doubanio.com/lpic/s4498971.jpg" />
@@ -23,7 +22,8 @@
     <div class="radio_show">
         <div class="channel_control">
             <span>频&nbsp;&nbsp;&nbsp;&nbsp;道</span>
-        </div>        
+        </div>
+        <a href="javascript:void(0);" style="display:none;" class="icon_close radio_btn" id="j_btn_close"><span class="iconfont radio_btn_close">&#xe607;</span></a>
         <div class="radio_top">
             <p class="title"></p>
             <p class="desc"></p>
@@ -52,15 +52,16 @@
                 <a href="javascript:void(0);" class="radio_control__btn radio_btn" id="j_btn_next"><span class="iconfont icon_next radio_control__icon">&#xe605;</span></a>
             </li>
         </ul>
-        <div class="lrc_control" data-sid="" data-ssid="" id="j_btn_lrc"><span>歌&nbsp;&nbsp;&nbsp;&nbsp;词</span></div>
+        <div class="lrc_control" id="j_btn_lrc"><span>歌&nbsp;&nbsp;&nbsp;&nbsp;词</span></div>
     </div>
     <a class="mask_link radio_btn" style="display: none" href="javascript:void(0);"><div class="mask">继续播放 &gt;</div></a>
 </div>
 <script type="text/javascript" src="assets/js/zepto.min.js"></script>
 <script type="text/javascript" src="assets/js/player.js"></script>
+<script type="text/javascript" src="assets/js/audio.js"></script>
 <script type="text/javascript" src="assets/js/app.js"></script>
-<script type="text/javascript">     
-    app.init();
+<script type="text/javascript"> 
+ app.init();
 </script>
 </body>
 </html>

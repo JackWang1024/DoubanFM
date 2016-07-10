@@ -25,6 +25,7 @@
     init: function() {       
       exports.bind();
       exports.ajax.song();
+      var effect = new AudioEffect(document.getElementById('audio'));
     },
     ajax: {
       song: function() {
@@ -86,11 +87,11 @@
           success: function(ret) {
             if(ret.r == 0) {
               loginData = {
-                user_id : ret.user_id;
-                token : ret.token;
-                expire : ret.expire;
-                user_name : ret.user_name;
-                email : ret.email;
+                user_id : ret.user_id,
+                token : ret.token,
+                expire : ret.expire,
+                user_name : ret.user_name,
+                email : ret.email
               }
             }
             console.info(ret);
