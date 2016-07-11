@@ -25,7 +25,7 @@
     init: function() {       
       exports.bind();
       exports.ajax.song();
-      var effect = new AudioEffect(document.getElementById('audio'));
+      // var effect = new AudioEffect(document.getElementById('audio'));
     },
     ajax: {
       song: function() {
@@ -95,6 +95,8 @@
               }
             }
             console.info(ret);
+            console.log('--');
+            console.log(loginData);
           },
           error: function(err) {
             console.error(err);
@@ -121,8 +123,8 @@
           $(this).css('color', '#f10303');
       })
       .on('click', '#j_btn_pause', function() {
-        $(this).css('display', 'none');
-        $('.mask_link').css('display', 'block');
+        $(this).css('display', 'none');        
+        $('.mask_link').html('继续播放 &gt;').css('display', 'block');
         player.pause();
       })
       .on('click', '#j_btn_next', function() {
@@ -137,8 +139,20 @@
         var win = remote.getCurrentWindow();
         win.close();
       })
+      .on('click', '#j_btn_login', function() {
+        var username = $('#j_btn_username').val();
+        var pwd = $('#j_btn_username').val();
+        console.log(username);
+        console.log(pwd);
+      })
       .on('click', '#j_btn_lrc', function() {                
         $('.album_mask').toggleClass('hidden');
+      })
+      .on('click', '#j_btn_set', function() {
+        $('.pop_login').css('display', 'block');
+      })
+      .on('click', '#j_login_close', function() {
+        $('.pop_login').css('display', 'none');
       });
     }
 

@@ -54,7 +54,20 @@
         </ul>
         <div class="lrc_control" id="j_btn_lrc"><span>歌&nbsp;&nbsp;&nbsp;&nbsp;词</span></div>
     </div>
-    <a class="mask_link radio_btn" style="display: none" href="javascript:void(0);"><div class="mask">继续播放 &gt;</div></a>
+    <a class="mask_link radio_btn" style="display: none" href="javascript:void(0);"></a>
+    <div class="pop_login" style="display:none;">
+        <a href="javascript:void(0);" class="login_close" id="j_login_close"><span class="iconfont radio_btn_close">&#xe607;</span></a>
+        <p id="legend">登录</p>
+        <div class="login_item">
+            <input type="text" id="j_btn_username" name="username" class="text pop_email" placeholder="邮箱 ／ 用户名">
+        </div>
+        <div class="login_item">
+            <input type="password" id="j_btn_pwd" name="password" class="text pop_pwd" placeholder="密码">
+        </div>
+        <div class="login_item">
+            <input type="submit" id="j_btn_login" class="login_btn" value="登 录">
+        </div>
+    </div>
 </div>
 <script type="text/javascript" src="assets/js/zepto.min.js"></script>
 <script type="text/javascript" src="assets/js/player.js"></script>

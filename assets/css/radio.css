@@ -66,6 +66,58 @@ html, body {
   font-size: 13px;
   font-family: Arial;
 }
+.pop_login {
+  color: #000;
+  text-decoration: none;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  right: 0;
+  width: 215px;
+  opacity: 0.95;
+  background: #FFF;
+  font-size: 13px;
+  font-family: Arial; 
+  padding: 0px 20px 0px 20px;
+}
+.pop_login p {
+  font-size: 18px;
+  color: #333;
+  padding: 0;
+  margin-top: 40px;
+}
+.pop_login .login_close {
+  position: absolute;
+  text-decoration: none;
+  color: #5d5d5d;
+  right: 10px;
+  top: 10px;
+  font-size: 12px;
+}
+.text {
+  width: 195px;
+  margin: 0px;
+  border: 0px;
+  background-color: #eef1f0;
+  padding: 10px;
+  color: black;
+  margin-bottom: 15px;
+  outline: none;
+}
+.login_btn {
+  display: block;
+  background-color: #9dd6c5;
+  width: 110px;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  border: 0 none;
+  color: #fff;
+  font-size: 14px;
+  float: right;
+  cursor: pointer;
+  outline: none;
+}
 .album_show a {
   display: block;
 }
