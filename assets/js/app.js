@@ -22,6 +22,7 @@
   var loginData = {};
 
   var exports = global.app = {
+    hasLogin: false,
     init: function() {       
       exports.bind();
       exports.ajax.song();
@@ -29,21 +30,26 @@
     },
     ajax: {
       song: function() {
+        $('.album_mask p').html('');
+        var options = {
+          app_name: 'radio_android',
+          version: 100,
+          type: 'n',
+          channel: 1
+        };
+        if(exports.hasLogin) {
+          options.user_id = loginData.user_id;
+          options.expire = loginData.expire;
+          options.token = loginData.token;
+        }        
         $.ajax({
           url: 'http://www.douban.com/j/app/radio/people',
-          data: {
-            app_name: 'radio_android',
-            version: 100,
-            type: 'n',
-            channel: 1
-          },
-          success: function(ret) {
-            // render song detail
-            var data = ret.song[0];
+          data: options,
+          success: function(ret) {            
+            var data = ret.song[0]; // render song detail
             exports.ajax.lrc(data.sid, data.ssid);
-            exports.render(data);
-            // play song
-            var play_url = data.url;
+            exports.render(data);            
+            var play_url = data.url; // play song
             player.play(play_url);
           },
           error: function(err) {
@@ -96,6 +102,7 @@
                 user_name : ret.user_name,
                 email : ret.email
               };
+              exports.hasLogin = true;
               $('.pop_login').css('display', 'none');
             } else {
               alert(ret.err);
@@ -104,6 +111,11 @@
       }
     },
     render: function(data) {
+      if(data.like == 0) {
+        $('#j_btn_heart').css('color', '#000');
+      } else {
+        $('#j_btn_heart').css('color', '#f10303');
+      }
       $('.album').attr('src', data.picture);
       $('.radio_top .title').text(data.artist);
       $('.radio_top .desc').html('&lt; ' + data.albumtitle + ' &gt;' + ' ' + data.public_time);
@@ -151,7 +163,13 @@
       })
       .on('click', '#j_login_close', function() {
         $('.pop_login').css('display', 'none');
-      });
+      })
+      .on('click', '.channel_control', function() {
+        $('.ch_list_wrapper').css('display', 'block');
+      })
+      .on('click', '#j_channel_close', function() {
+        $('.ch_list_wrapper').css('display', 'none');
+      })
     }
 
   }

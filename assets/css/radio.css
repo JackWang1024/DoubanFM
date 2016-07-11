@@ -118,6 +118,62 @@ html, body {
   cursor: pointer;
   outline: none;
 }
+.ch_list_wrapper {
+  color: #000;
+  text-decoration: none;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  right: 0;
+  width: 215px;
+  opacity: 0.95;
+  background: #FFF;
+  font-size: 13px;
+  font-family: Arial; 
+  padding: 0px 20px 0px 20px;
+  overflow-y: auto;
+}
+.ch_list_wrapper .ch_close {
+  position: absolute;
+  text-decoration: none;
+  color: #5d5d5d;
+  right: 10px;
+  top: 10px;
+  font-size: 12px;
+}
+.ch_list_wrapper .ch_title {
+  margin-top: 40px;
+  font-size: 14px;
+  font-weight: normal;
+}
+.channel_list {
+  list-style: none;
+  margin: 0;
+  padding: 0;  
+}
+.channel_list .channel {
+  position: relative;
+  background: rgba(198,211,205,0.5);
+  width: 180px;
+  height: 35px;
+  line-height: 35px;
+  padding: 0px 10px;
+  margin: 16px 0px 16px 0px;
+  font-size: 11px;
+  cursor: pointer;
+}
+.channel_list .channel.playing {
+  width: 180px;
+  background: #9dd6c5;
+}
+.channel_list .channel .st_playing {
+  background: url(https://img3.doubanio.com/f/fm/33fff010d098b0775e981c2b27b7a0d32dcbe2a2/pics/fm/home/ic_play_current1a.gif) no-repeat;
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  top: 13px;
+  right: 21px;
+}
 .album_show a {
   display: block;
 }
