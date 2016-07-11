@@ -80,11 +80,14 @@
           }
         });
       },
-      login: function(options) {
-        $.ajax({
-          url: 'http://www.douban.com/j/app/login',
-          data: options,
-          success: function(ret) {
+      login: function(username, pwd) {
+        $.post('http://www.douban.com/j/app/login', {
+            app_name: 'radio_desktop_win',
+            version: 100, 
+            email: username, 
+            password: pwd
+          }, 
+          function (ret) {        
             if(ret.r == 0) {
               loginData = {
                 user_id : ret.user_id,
@@ -92,16 +95,12 @@
                 expire : ret.expire,
                 user_name : ret.user_name,
                 email : ret.email
-              }
+              };
+              $('.pop_login').css('display', 'none');
+            } else {
+              alert(ret.err);
             }
-            console.info(ret);
-            console.log('--');
-            console.log(loginData);
-          },
-          error: function(err) {
-            console.error(err);
-          }
-        });
+        })
       }
     },
     render: function(data) {
@@ -141,9 +140,8 @@
       })
       .on('click', '#j_btn_login', function() {
         var username = $('#j_btn_username').val();
-        var pwd = $('#j_btn_username').val();
-        console.log(username);
-        console.log(pwd);
+        var pwd = $('#j_btn_pwd').val();
+        exports.ajax.login(username, pwd);
       })
       .on('click', '#j_btn_lrc', function() {                
         $('.album_mask').toggleClass('hidden');
