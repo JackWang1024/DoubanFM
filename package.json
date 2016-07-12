@@ -4,7 +4,8 @@
   "description": "DoubanFM desktop version built on electron",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build": "electron-packager . doubanFM --ignore=node_modules/electron-* --platform=win32 --arch=x64 --version=1.2.6"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,7 @@
   },
   "homepage": "https://github.com/boxizen/DoubanFM#readme",
   "devDependencies": {
+    "electron-builder": "^5.12.1",
     "electron-prebuilt": "^1.2.0"
   },
   "dependencies": {

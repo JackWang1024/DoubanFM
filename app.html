@@ -54,25 +54,25 @@
         <div class="lrc_control radio_btn" id="j_btn_lrc"><span>歌&nbsp;&nbsp;&nbsp;&nbsp;词</span></div>
         <a class="mask_link radio_btn" style="display: none" href="javascript:void(0);"></a>
     </div>
-    <div class="channel_menu radio_btn" style="display: none">
-        <a href="javascript:void(0);" class="menu_close" id="j_menu_close"><span class="iconfont radio_btn_close">&#xe607;</span></a>
+    <div class="channel_menu" style="display: none">
+        <a href="javascript:void(0);" class="menu_close radio_btn" id="j_menu_close"><span class="iconfont radio_btn_close">&#xe607;</span></a>
         <ul class="menu_list">
-            <li>
+            <li class="radio_btn">
                 <a href="javascript:void(0);" class="radio_spec_btn radio_btn radio_btn_login" data-desc="登 录" id="j_btn_login">
                     <span class="iconfont icon_set radio_spec__icon">&#xe610;</span>                
                 </a>
             </li>
-            <li>
+            <li class="radio_btn">
                 <a href="javascript:void(0);" class="radio_spec_btn radio_btn radio_btn_chn" data-desc="频 道" id="j_btn_chn">
                     <span class="iconfont icon_set radio_spec__icon">&#xe60f;</span>
                 </a>
             </li>
-            <li>
+            <li class="radio_btn">
                 <a href="javascript:void(0);" class="radio_spec_btn radio_btn radio_btn_set" data-desc="设 置" id="j_btn_set">
                     <span class="iconfont icon_set radio_spec__icon">&#xe60a;</span>
                 </a>
             </li>
-            <li>
+            <li class="radio_btn">
                 <a href="javascript:void(0);" class="radio_spec_btn radio_btn radio_btn_exit" data-desc="退 出" id="j_btn_exit">
                     <span class="iconfont icon_set radio_spec__icon">&#xe60e;</span>
                 </a>
@@ -84,7 +84,7 @@
         <a href="javascript:void(0);" class="login_close" id="j_login_close"><span class="iconfont radio_btn_close">&#xe607;</span></a>
         <p id="legend">登录</p>
         <div class="login_item">
-            <input type="text" id="j_btn_username" name="username" class="text pop_email" placeholder="邮箱 ／ 用户名">
+            <input type="text" id="j_btn_username" name="username" class="text pop_email" placeholder="邮箱">
         </div>
         <div class="login_item">
             <input type="password" id="j_btn_pwd" name="password" class="text pop_pwd" placeholder="密码">
@@ -115,16 +115,31 @@
             <li data-cid="1" class="channel personal playing">
                 <a class="chl_name"><span class="cname">港台经典</span></a>
                 <span class="play_icon st_playing"></span>
-            </li>
-            <li data-cid="-3" class="channel personal">
-                <a class="chl_name"><span class="cname">我的红心兆赫</span></a>
+            </li>            
+            <li data-cid="10" class="channel personal">
+                <a class="chl_name"><span class="cname">电视原声</span></a>
                 <span class="play_icon"></span>
             </li>
-            <li data-cid="-10" class="channel personal">
-                <a class="chl_name"><span class="cname">豆瓣精选兆赫</span></a>
+            <li data-cid="9" class="channel personal">
+                <a class="chl_name"><span class="cname">轻音乐</span></a>
+                <span class="play_icon"></span>
+            </li>
+            <li data-cid="194" class="channel personal">
+                <a class="chl_name"><span class="cname">流行</span></a>
+                <span class="play_icon"></span>
+            </li>
+            <li data-cid="7" class="channel personal">
+                <a class="chl_name"><span class="cname">摇滚</span></a>
+                <span class="play_icon"></span>
+            </li>
+            <li data-cid="8" class="channel personal">
+                <a class="chl_name"><span class="cname">民谣</span></a>
                 <span class="play_icon"></span>
             </li>
         </ul>
+    </div>
+    <div class="toast" style="display: none;">
+        <p>欢迎回来</p>
     </div>
 </div>
 <script type="text/javascript" src="assets/js/zepto.min.js"></script>

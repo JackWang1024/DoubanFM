@@ -122,6 +122,10 @@
               };
               exports.hasLogin = true;
               $('.pop_login').css('display', 'none');
+              $('.toast').css('display', 'block');
+              setTimeout(function() {
+                $('.toast').css('display', 'none');
+              }, 1500);
             } else {
               alert(ret.err);
             }
@@ -202,6 +206,9 @@
       })
       .on('mouseover', '.menu_list .radio_btn', function() {
         $('.menu-desc').text($(this).attr('data-desc'));
+      })
+      .on('click', '#j_btn_set', function() {
+        alert('此功能待更新');
       })
       // login
       .on('click', '#j_commit_login', function() {
