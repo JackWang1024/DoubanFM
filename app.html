@@ -20,15 +20,14 @@
         <img class="album" src="https://img3.doubanio.com/lpic/s4498971.jpg" />
     </div>
     <div class="radio_show">
-        <div class="channel_control">
-            <span>频&nbsp;&nbsp;&nbsp;&nbsp;道</span>
-        </div>
+        <div class="channel_control radio_btn">
+            <span>菜&nbsp;&nbsp;&nbsp;&nbsp;单</span>
+        </div>        
         <a href="javascript:void(0);" style="display:none;" class="icon_close radio_btn" id="j_btn_close"><span class="iconfont radio_btn_close">&#xe607;</span></a>
         <div class="radio_top">
             <p class="title"></p>
             <p class="desc"></p>
-            <a href="javascript:void(0);" class="radio_spec_btn radio_btn radio_btn_pause" id="j_btn_pause"><span class="iconfont icon_pause radio_spec__icon">&#xe609;</span></a>
-            <a href="javascript:void(0);" class="radio_spec_btn radio_btn radio_btn_set" id="j_btn_set"><span class="iconfont icon_set radio_spec__icon">&#xe60b;</span></a>
+            <a href="javascript:void(0);" class="radio_spec_btn radio_btn radio_btn_pause" id="j_btn_pause"><span class="iconfont icon_pause radio_spec__icon">&#xe609;</span></a>                                   
         </div>
         <div class="radio_progress radio_btn">
             <span class="radio_song__name" id="j_song_name"></span>
@@ -52,9 +51,35 @@
                 <a href="javascript:void(0);" class="radio_control__btn radio_btn" id="j_btn_next"><span class="iconfont icon_next radio_control__icon">&#xe605;</span></a>
             </li>
         </ul>
-        <div class="lrc_control" id="j_btn_lrc"><span>歌&nbsp;&nbsp;&nbsp;&nbsp;词</span></div>
+        <div class="lrc_control radio_btn" id="j_btn_lrc"><span>歌&nbsp;&nbsp;&nbsp;&nbsp;词</span></div>
+        <a class="mask_link radio_btn" style="display: none" href="javascript:void(0);"></a>
     </div>
-    <a class="mask_link radio_btn" style="display: none" href="javascript:void(0);"></a>
+    <div class="channel_menu radio_btn" style="display: none">
+        <a href="javascript:void(0);" class="menu_close" id="j_menu_close"><span class="iconfont radio_btn_close">&#xe607;</span></a>
+        <ul class="menu_list">
+            <li>
+                <a href="javascript:void(0);" class="radio_spec_btn radio_btn radio_btn_login" data-desc="登 录" id="j_btn_login">
+                    <span class="iconfont icon_set radio_spec__icon">&#xe610;</span>                
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void(0);" class="radio_spec_btn radio_btn radio_btn_chn" data-desc="频 道" id="j_btn_chn">
+                    <span class="iconfont icon_set radio_spec__icon">&#xe60f;</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void(0);" class="radio_spec_btn radio_btn radio_btn_set" data-desc="设 置" id="j_btn_set">
+                    <span class="iconfont icon_set radio_spec__icon">&#xe60a;</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void(0);" class="radio_spec_btn radio_btn radio_btn_exit" data-desc="退 出" id="j_btn_exit">
+                    <span class="iconfont icon_set radio_spec__icon">&#xe60e;</span>
+                </a>
+            </li>
+        </ul>
+        <p class="menu-desc"></p>
+    </div>    
     <div class="pop_login" style="display:none;">
         <a href="javascript:void(0);" class="login_close" id="j_login_close"><span class="iconfont radio_btn_close">&#xe607;</span></a>
         <p id="legend">登录</p>
@@ -65,7 +90,7 @@
             <input type="password" id="j_btn_pwd" name="password" class="text pop_pwd" placeholder="密码">
         </div>
         <div class="login_item">
-            <input type="submit" id="j_btn_login" class="login_btn" value="登 录">
+            <input type="submit" id="j_commit_login" class="login_btn" value="登 录">
         </div>
     </div>
     <div class="ch_list_wrapper" style="display:none;">

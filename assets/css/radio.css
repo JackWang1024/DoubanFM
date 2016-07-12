@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'iconfont';
-  src: url('http://at.alicdn.com/t/font_1467820529_4208822.eot'); /* IE9*/
-  src: url('http://at.alicdn.com/t/font_1467820529_4208822.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('http://at.alicdn.com/t/font_1467820529_4208822.woff') format('woff'), /* chrome、firefox */
-  url('http://at.alicdn.com/t/font_1467820529_4208822.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
-  url('http://at.alicdn.com/t/font_1467820529_4208822.svg#iconfont') format('svg'); /* iOS 4.1- */
-}          
+  src: url('http://at.alicdn.com/t/font_1468295379_9141335.eot'); /* IE9*/
+  src: url('http://at.alicdn.com/t/font_1468295379_9141335.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('http://at.alicdn.com/t/font_1468295379_9141335.woff') format('woff'), /* chrome、firefox */
+  url('http://at.alicdn.com/t/font_1468295379_9141335.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url('http://at.alicdn.com/t/font_1468295379_9141335.svg#iconfont') format('svg'); /* iOS 4.1- */
+}    
       
 .iconfont {
   font-family:"iconfont" !important;
@@ -134,10 +134,10 @@ html, body {
   overflow-y: auto;
 }
 .ch_list_wrapper .ch_close {
-  position: absolute;
+  position: fixed;
   text-decoration: none;
   color: #5d5d5d;
-  right: 10px;
+  right: 20px;
   top: 10px;
   font-size: 12px;
 }
@@ -240,10 +240,8 @@ html, body {
   color: #000;
   top: 5px;  
 }
+
 .radio_top .radio_btn_pause {
-  right: 22px;
-}
-.radio_top .radio_btn_set {
   right: 0px;
 }
 .radio_top .radio_spec__icon {
@@ -388,4 +386,60 @@ html, body {
 }
 .channel_control:hover {
   border-top: 16px solid #000;
+}
+.channel_menu {
+  position: absolute;
+  width: 100%;
+  height: 245px;
+  background: #000;
+  opacity: 0.9;
+  z-index: 101;
+}
+.channel_menu .menu_close {
+  text-decoration: none;
+  color: #FFF;
+  font-size: 16px;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  font-weight: bold;
+}
+.channel_menu .menu_list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  color: #FFF;
+  float: left;
+}
+.channel_menu .menu_list li {
+  display: inline-block;
+  width: 125px;
+  height: 245px;
+  float: left;
+  text-align: center;
+  line-height: 200px;
+}
+.channel_menu .menu_list .menu_desc {
+  display: block;
+  font-size: 16px;
+  display: none;
+}
+.channel_menu .menu_list .radio_spec_btn {
+  text-decoration: none;
+  color: #FFF;  
+}
+.channel_menu .menu_list .radio_spec_btn .iconfont {
+  transition: all 0.2s;
+  font-size: 30px;
+}
+.channel_menu .menu_list .radio_spec_btn .iconfont:hover {
+  font-size: 50px;
+}
+.channel_menu .menu-desc {
+  position: absolute;
+  width: 100%;
+  bottom: 10px;
+  text-align: center;
+  color: #FFF;
+  font-size: 14px;
 }

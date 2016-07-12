@@ -145,31 +145,45 @@
         $(this).css('display', 'none');
         $('#j_btn_pause').css('display', 'block');
         player.play();
+      })            
+      .on('click', '#j_btn_lrc', function() {                
+        $('.album_mask').toggleClass('hidden');
       })
-      .on('click', '#j_btn_close', function() {
+      // menu
+      .on('click', '#j_btn_login', function() {
+        $('.channel_menu').css('display', 'none');
+        $('.pop_login').css('display', 'block');
+      })
+      .on('click', '#j_btn_chn', function() {
+        $('.channel_menu').css('display', 'none');
+        $('.ch_list_wrapper').css('display', 'block');
+      })
+      .on('click', '#j_btn_exit', function() {
         var win = remote.getCurrentWindow();
         win.close();
       })
-      .on('click', '#j_btn_login', function() {
+      .on('click', '#j_menu_close', function() {
+        $('.channel_menu').css('display', 'none');
+      })
+      .on('mouseover', '.menu_list .radio_btn', function() {
+        $('.menu-desc').text($(this).attr('data-desc'));
+      })
+      // login
+      .on('click', '#j_commit_login', function() {
         var username = $('#j_btn_username').val();
         var pwd = $('#j_btn_pwd').val();
         exports.ajax.login(username, pwd);
       })
-      .on('click', '#j_btn_lrc', function() {                
-        $('.album_mask').toggleClass('hidden');
-      })
-      .on('click', '#j_btn_set', function() {
-        $('.pop_login').css('display', 'block');
-      })
       .on('click', '#j_login_close', function() {
         $('.pop_login').css('display', 'none');
       })
+      // channel
       .on('click', '.channel_control', function() {
-        $('.ch_list_wrapper').css('display', 'block');
+        $('.channel_menu').css('display', 'block');        
       })
       .on('click', '#j_channel_close', function() {
         $('.ch_list_wrapper').css('display', 'none');
-      })
+      })      
     }
 
   }
