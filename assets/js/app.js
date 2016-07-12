@@ -132,6 +132,9 @@
         })
       }
     },
+    event: function() {
+
+    },
     render: function(data) {
       console.log(data);
       if(data.like == 0) {
@@ -234,6 +237,12 @@
       .on('click', '#j_channel_close', function() {
         $('.ch_list_wrapper').css('display', 'none');
       })      
+      // keyboard
+      .on('keydown', function(e) {
+        // ctrl + shift + d
+        if(e.keyCode == 68 && e.ctrlKey && e.shiftKey){          
+        }
+      })
     }
 
   }

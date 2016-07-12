@@ -1,15 +1,20 @@
 # DoubanFM
 
-DoubanFM desktop version built on electron. 
+DoubanFM是一款使用electron编写的桌面级APP。
 
-## INSTALLATION
+## electron
 
-* Windows
+Electron 是一款可以利用 Web技术 开发跨平台桌面应用的框架，最初是 Github 发布的 Atom 编辑器衍生出的 Atom Shell，后更名为 Electron，详情请点击[这里](http://electron.atom.io/)。
 
+## 安装运行
 
-* MacOS
+可使用下面命令一键安装并执行程序:
 
-## FEATURES
+```bash
+npm install && npm start
+```
+
+## 功能特点
 
 - [x] 基本播放功能
 - [x] 进度条拖动
@@ -22,29 +27,37 @@ DoubanFM desktop version built on electron.
 - [x] 歌词同步
 - [ ] 均衡器调节
 
-## SHORTCUTS
+## 快捷键
 `Space` play/pause
 
-`Ctrl` + `D` never show again
+`Ctrl` + `D` 跳过当前歌曲
 
-`Ctrl` + `N` next
+`Ctrl` + `N` 下一首歌曲
 
-`Ctrl` + `L` login
+`Ctrl` + `L` 显示登陆界面 
 
-`Ctrl` + `U` like/dislike
+`Ctrl` + `U` 标记/取消标记爱心
 
-`Ctrl` + `M` show/hide menu
+`Ctrl` + `M` 显示/隐藏菜单
 
-`Ctrl` + `S` show/hide lrc
+`Ctrl` + `S` 显示/隐藏歌词
 
-`Ctrl` + `Q` exit
+`Ctrl` + `Q` 退出当前程序
 
-## SCREENSHOT
-![豆瓣FM](https://github.com/boxizen/DoubanFM/blob/master/intro.png)
+## 程序截图
 
-## BUGS
-- ~~can not move panel~~
-- lrc show bugs
+## 打包发布
+
+* Windows
+
+* MacOS
+
+
+## TODO
+- ~~修复程序部分区域拖动无法移动问题~~
+- 修复lrc歌词展示不准确问题
+- 添加音乐均衡器，实现不同音效的设置
+- 为播放器添加快捷键设置
 
 ## LICENSE
 
