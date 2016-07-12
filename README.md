@@ -40,6 +40,7 @@ DoubanFM desktop version built on electron.
 `Ctrl` + `Q` exit
 
 ## SCREENSHOT
+![豆瓣FM](https://github.com/boxizen/DoubanFM/blob/master/intro.png)
 
 ## BUGS
 - ~~can not move panel~~
