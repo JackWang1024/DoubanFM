@@ -42,10 +42,10 @@
         </div>
         <ul class="radio_control">
             <li class="radio_control__item" style="padding-left: 0px">
-                <a href="javascript:void(0);" class="radio_control__btn radio_btn" id="j_btn_heart"><span class="iconfont icon_heart radio_control__icon">&#xe603;</span></a>
+                <a href="javascript:void(0);" class="radio_control__btn radio_btn liked" id="j_btn_heart"><span class="iconfont icon_heart radio_control__icon">&#xe603;</span></a>
             </li>
             <li class="radio_control__item">
-                <a href="javascript:void(0);" class="radio_control__btn radio_btn"><span class="iconfont icon_rubish radio_control__icon">&#xe606;</span></a>
+                <a href="javascript:void(0);" class="radio_control__btn radio_btn" id="j_btn_trash"><span class="iconfont icon_rubish radio_control__icon">&#xe606;</span></a>
             </li>            
             <li class="radio_control__item">
                 <a href="javascript:void(0);" class="radio_control__btn radio_btn" id="j_btn_next"><span class="iconfont icon_next radio_control__icon">&#xe605;</span></a>
@@ -80,7 +80,7 @@
         </ul>
         <p class="menu-desc"></p>
     </div>    
-    <div class="pop_login" style="display:none;">
+    <div class="pop_login radio_btn" style="display:none;">
         <a href="javascript:void(0);" class="login_close" id="j_login_close"><span class="iconfont radio_btn_close">&#xe607;</span></a>
         <p id="legend">登录</p>
         <div class="login_item">
@@ -93,39 +93,43 @@
             <input type="submit" id="j_commit_login" class="login_btn" value="登 录">
         </div>
     </div>
-    <div class="ch_list_wrapper" style="display:none;">
+    <div class="ch_list_wrapper radio_btn" data-cid="1" style="display:none;">
         <a href="javascript:void(0);" class="ch_close" id="j_channel_close"><span class="iconfont radio_btn_close">&#xe607;</span></a>
         <h3 class="ch_title">个人兆赫</h3>
         <ul class="channel_list">
-            <li data-cid="0" class="channel personal playing">
+            <li data-cid="0" class="channel personal">
                 <a class="chl_name"><span class="cname">我的私人兆赫</span></a>
-                <span class="st_playing"></span>
+                <span class="play_icon"></span>
             </li>
-            <li data-cid="0" class="channel personal">
+            <li data-cid="-3" class="channel personal">
                 <a class="chl_name"><span class="cname">我的红心兆赫</span></a>
+                <span class="play_icon"></span>
             </li>
-            <li data-cid="0" class="channel personal">
+            <li data-cid="-10" class="channel personal">
                 <a class="chl_name"><span class="cname">豆瓣精选兆赫</span></a>
+                <span class="play_icon"></span>
             </li>
         </ul>
         <h3 class="ch_title">推荐兆赫</h3>
         <ul class="channel_list">
-            <li data-cid="0" class="channel personal playing">
-                <a class="chl_name"><span class="cname">我的私人兆赫</span></a>
-                <span class="st_playing"></span>
+            <li data-cid="1" class="channel personal playing">
+                <a class="chl_name"><span class="cname">港台经典</span></a>
+                <span class="play_icon st_playing"></span>
             </li>
-            <li data-cid="0" class="channel personal">
+            <li data-cid="-3" class="channel personal">
                 <a class="chl_name"><span class="cname">我的红心兆赫</span></a>
+                <span class="play_icon"></span>
             </li>
-            <li data-cid="0" class="channel personal">
+            <li data-cid="-10" class="channel personal">
                 <a class="chl_name"><span class="cname">豆瓣精选兆赫</span></a>
+                <span class="play_icon"></span>
             </li>
         </ul>
     </div>
 </div>
 <script type="text/javascript" src="assets/js/zepto.min.js"></script>
 <script type="text/javascript" src="assets/js/player.js"></script>
-<script type="text/javascript" src="assets/js/audio.js"></script>
+<script type="text/javascript" src="assets/js/effect.js"></script>
 <script type="text/javascript" src="assets/js/app.js"></script>
 <script type="text/javascript"> 
  app.init();

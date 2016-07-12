@@ -29,13 +29,13 @@
       // var effect = new AudioEffect(document.getElementById('audio'));
     },
     ajax: {
-      song: function() {
+      song: function(cid) {
         $('.album_mask p').html('');
         var options = {
           app_name: 'radio_android',
           version: 100,
           type: 'n',
-          channel: 1
+          channel: $('.channel_list .playing').attr('data-cid')
         };
         if(exports.hasLogin) {
           options.user_id = loginData.user_id;
@@ -46,7 +46,11 @@
           url: 'http://www.douban.com/j/app/radio/people',
           data: options,
           success: function(ret) {            
-            var data = ret.song[0]; // render song detail
+            if(ret.err || ret.song.length == 0) {
+              console.log(ret.err);
+              return ;
+            }
+            var data = ret.song[0]; // render song detail            
             exports.ajax.lrc(data.sid, data.ssid);
             exports.render(data);            
             var play_url = data.url; // play song
@@ -66,7 +70,6 @@
           ssid: ssid
         },
         success: function(ret) {
-          console.log(ret.lyric);
           $('#j_lrc_list').html(player.getLrcHtml(ret));
         },
         error: function(err) {
@@ -75,11 +78,26 @@
        })
       },
       behaviour: function(options) {
+        options.app_name = 'radio_android';
+        options.version = 100;
+        if(exports.hasLogin) {
+          options.user_id = loginData.user_id;
+          options.expire = loginData.expire;
+          options.token = loginData.token;
+        }  
+
         $.ajax({
           url: 'http://www.douban.com/j/app/radio/people',
           data: options,
           success: function(ret) {
             console.info(ret);
+            if(options.type == 'b' && ret.song && ret.song.length >0) {
+              var data = ret.song[0]; // render song detail            
+              exports.ajax.lrc(data.sid, data.ssid);
+              exports.render(data);            
+              var play_url = data.url; // play song
+              player.play(play_url);
+            } 
           },
           error: function(err) {
             console.error(err);
@@ -88,7 +106,7 @@
       },
       login: function(username, pwd) {
         $.post('http://www.douban.com/j/app/login', {
-            app_name: 'radio_desktop_win',
+            app_name: 'radio_android',
             version: 100, 
             email: username, 
             password: pwd
@@ -111,10 +129,11 @@
       }
     },
     render: function(data) {
+      console.log(data);
       if(data.like == 0) {
-        $('#j_btn_heart').css('color', '#000');
+        $('#j_btn_heart').removeClass('liked');
       } else {
-        $('#j_btn_heart').css('color', '#f10303');
+        $('#j_btn_heart').addClass('liked');
       }
       $('.album').attr('src', data.picture);
       $('.radio_top .title').text(data.artist);
@@ -130,8 +149,24 @@
         $('#j_song_prg_now').css('width', '0%');
         exports.ajax.song();
       });
-      $(document.body).on('click', '#j_btn_heart', function() {
-          $(this).css('color', '#f10303');
+      $(document.body).on('click', '#j_btn_heart', function() {    
+        var options = {
+          channel: $('.ch_list_wrapper').attr('data-cid'),
+          type: 'r',
+          sid: $('.lrc_control').attr('data-sid')
+        } 
+        if($(this).hasClass('liked')) {
+          options.type = 'u';
+        }
+        $(this).toggleClass('liked');
+        exports.ajax.behaviour(options)
+      })      
+      .on('click', '#j_btn_trash', function() {
+        exports.ajax.behaviour({
+          channel: $('.ch_list_wrapper').attr('data-cid'),
+          type: 'b',
+          sid: $('.lrc_control').attr('data-sid')
+        })
       })
       .on('click', '#j_btn_pause', function() {
         $(this).css('display', 'none');        
@@ -180,6 +215,14 @@
       // channel
       .on('click', '.channel_control', function() {
         $('.channel_menu').css('display', 'block');        
+      })
+      .on('click', '.channel_list .channel', function() {
+        $('.channel').removeClass('playing');
+        $('.play_icon').removeClass('st_playing');
+        $(this).addClass('playing');
+        $(this).find('.play_icon').addClass('st_playing');
+        $('.ch_list_wrapper').attr('data-cid', $(this).attr('data-cid'));
+        exports.ajax.song();
       })
       .on('click', '#j_channel_close', function() {
         $('.ch_list_wrapper').css('display', 'none');

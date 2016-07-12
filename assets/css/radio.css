@@ -335,6 +335,9 @@ html, body {
 .radio_control__icon {
   font-size: 30px;
 }
+.liked {
+  color: #f10303;
+}
 .icon_rubish {
   position: absolute;
   top: -3px;
