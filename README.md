@@ -1,6 +1,10 @@
 # DoubanFM
 
-DoubanFM是一款使用electron编写的桌面级APP。
+DoubanFM是一款使用豆瓣FM API和electron编写的桌面级APP。
+
+## API
+
+关于豆瓣FM的API可以参阅[这里](https://github.com/akfish/fm-terminal/blob/develop/douban-fm-api.md)
 
 ## electron
 
@@ -59,6 +63,7 @@ npm install && npm start
 - 添加音乐均衡器，实现不同音效的设置
 - 为播放器添加快捷键设置
 - 界面优化与代码重构
+- 爬虫抓取豆瓣FM的频道类别
 
 ## LICENSE
 
