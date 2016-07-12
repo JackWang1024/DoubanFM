@@ -2,9 +2,13 @@
 
 DoubanFM是一款使用豆瓣FM API和electron编写的桌面级APP。
 
+## 程序截图
+
+![intro](./intro.png)
+
 ## API
 
-关于豆瓣FM的API可以参阅[这里](https://github.com/akfish/fm-terminal/blob/develop/douban-fm-api.md)
+关于豆瓣FM的API可以参阅[此处](https://github.com/akfish/fm-terminal/blob/develop/douban-fm-api.md)
 
 ## electron
 
@@ -47,8 +51,6 @@ npm install && npm start
 `Ctrl` + `S` 显示/隐藏歌词
 
 `Ctrl` + `Q` 退出当前程序
-
-## 程序截图
 
 ## 打包发布
 
