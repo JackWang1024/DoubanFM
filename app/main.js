@@ -4,6 +4,8 @@ const app = electron.app
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
 
+const shortcut = require('electron-localshortcut');  
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
@@ -26,7 +28,41 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null
   })
+
+  // global shortcut events 
+  shortcut.register(mainWindow, 'Ctrl+D', () => {
+    mainWindow.webContents.send('global-shortcut', 'jump');
+  });
+
+  shortcut.register(mainWindow, 'Ctrl+N', () => {
+    mainWindow.webContents.send('global-shortcut', 'next');
+  });
+
+  shortcut.register(mainWindow, 'Ctrl+L', () => {
+    mainWindow.webContents.send('global-shortcut', 'login');
+  });
+
+  shortcut.register(mainWindow, 'Ctrl+U', () => {
+    mainWindow.webContents.send('global-shortcut', 'heart');
+  });  
+
+  shortcut.register(mainWindow, 'Ctrl+S', () => {
+    mainWindow.webContents.send('global-shortcut', 'lrc');
+  });  
+
+  shortcut.register(mainWindow, 'Ctrl+Q', () => {
+    mainWindow.webContents.send('global-shortcut', 'quit');
+  });  
+
+  shortcut.register(mainWindow, 'Ctrl+Shift+M', () => {
+    mainWindow.webContents.send('global-shortcut', 'menu');
+  });  
+
+  shortcut.register(mainWindow, 'Space', () => {
+    mainWindow.webContents.send('global-shortcut', 'play');
+  });  
 }
+
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
