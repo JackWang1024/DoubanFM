@@ -132,8 +132,59 @@
         })
       }
     },
-    event: function() {
-
+    event: {
+      trash: function() {
+        exports.ajax.behaviour({
+          channel: $('.ch_list_wrapper').attr('data-cid'),
+          type: 'b',
+          sid: $('.lrc_control').attr('data-sid')
+        });
+      },
+      login: function() {
+        var $pop = $('.pop_login');
+        if($pop.css('display') == 'none') {
+          $pop.css('display', 'block');  
+        } else {
+          $pop.css('display', 'none');
+        }   
+      },
+      like: function() {
+        var $heart = $('#j_btn_heart');
+        var options = {
+          channel: $('.ch_list_wrapper').attr('data-cid'),
+          type: 'r',
+          sid: $('.lrc_control').attr('data-sid')
+        } 
+        if($heart.hasClass('liked')) {
+          options.type = 'u';
+        }
+        $heart.toggleClass('liked');
+        exports.ajax.behaviour(options);  
+      },
+      menu: function() {
+        var $menu = $('.channel_menu');
+        if($menu.css('display') == 'none') {
+          $menu.css('display', 'block');  
+        } else {
+          $menu.css('display', 'none');
+        } 
+      },
+      play: function() {
+        var $mask = $('.mask_link'), $btn_pause = $('#j_btn_pause');
+        if($mask.css('display') == 'none') {
+          $btn_pause.css('display', 'none');        
+          $mask.html('继续播放 &gt;').css('display', 'block');
+          player.pause();  
+        } else {
+          $mask.css('display', 'none');        
+          $btn_pause.css('display', 'block');
+          player.play();  
+        }
+      },
+      exit: function() {
+        var win = remote.getCurrentWindow();
+        win.close();
+      }
     },
     render: function(data) {
       console.log(data);
@@ -157,23 +208,10 @@
         exports.ajax.song();
       });
       $(document.body).on('click', '#j_btn_heart', function() {    
-        var options = {
-          channel: $('.ch_list_wrapper').attr('data-cid'),
-          type: 'r',
-          sid: $('.lrc_control').attr('data-sid')
-        } 
-        if($(this).hasClass('liked')) {
-          options.type = 'u';
-        }
-        $(this).toggleClass('liked');
-        exports.ajax.behaviour(options)
+        exports.event.like();
       })      
       .on('click', '#j_btn_trash', function() {
-        exports.ajax.behaviour({
-          channel: $('.ch_list_wrapper').attr('data-cid'),
-          type: 'b',
-          sid: $('.lrc_control').attr('data-sid')
-        })
+        exports.event.trash();
       })
       .on('click', '#j_btn_pause', function() {
         $(this).css('display', 'none');        
@@ -239,9 +277,24 @@
       })      
       // keyboard
       .on('keydown', function(e) {
-        // ctrl + shift + d
-        if(e.keyCode == 68 && e.ctrlKey && e.shiftKey){          
+        if(e.keyCode == 68 && e.ctrlKey){
+          exports.event.trash();
+        } else if(e.keyCode == 78 && e.ctrlKey) {
+          exports.ajax.song();
+        } else if(e.keyCode == 76 && e.ctrlKey) {
+          exports.event.login();         
+        } else if(e.keyCode == 85 && e.ctrlKey) {
+          exports.event.like();
+        } else if(e.keyCode == 77 && e.ctrlKey && e.shiftKey) {
+          exports.event.menu();           
+        } else if(e.keyCode == 83 && e.ctrlKey) {
+          $('.album_mask').toggleClass('hidden');
+        } else if(e.keyCode == 81 && e.ctrlKey) {
+          exports.event.exit();
+        } else if(e.keyCode == 32) { // play or pause                              
+          exports.event.play();
         }
+
       })
     }
 
