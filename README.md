@@ -56,8 +56,15 @@ npm install && npm start
 
 * Windows
 
+```bash
+npm run build-win
+```
+
 * MacOS
 
+```bash
+npm run build-mac
+```
 
 ## TODO
 - ~~修复程序部分区域拖动无法移动问题~~

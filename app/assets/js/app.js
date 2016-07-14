@@ -7,6 +7,7 @@
 (function(global) {
 
   const remote = require('electron').remote;
+  const ipc = require('electron').ipcRenderer;
 
   var player = new Player({
         bar: '.radio_progress__bar',
@@ -187,7 +188,6 @@
       }
     },
     render: function(data) {
-      console.log(data);
       if(data.like == 0) {
         $('#j_btn_heart').removeClass('liked');
       } else {
@@ -202,6 +202,23 @@
       $('.lrc_control').attr('data-ssid', data.ssid);
     },
     bind: function() {
+      var emitter = {
+        'jump': exports.event.trash,
+        'next': exports.ajax.song,
+        'login': exports.event.login,
+        'heart': exports.event.like,
+        'lrc': function() {
+          $('.album_mask').toggleClass('hidden');
+        },
+        'quit': exports.event.exit,
+        'menu': exports.event.menu,
+        'play': exports.event.play
+      }
+
+      ipc.on('global-shortcut', function(args, type) {
+        emitter[type]();
+      });
+
       $('audio').on('ended', function() {
         $('#j_song_pro_crt').html('00:00');
         $('#j_song_prg_now').css('width', '0%');
@@ -274,28 +291,7 @@
       })
       .on('click', '#j_channel_close', function() {
         $('.ch_list_wrapper').css('display', 'none');
-      })      
-      // keyboard
-      .on('keydown', function(e) {
-        if(e.keyCode == 68 && e.ctrlKey){
-          exports.event.trash();
-        } else if(e.keyCode == 78 && e.ctrlKey) {
-          exports.ajax.song();
-        } else if(e.keyCode == 76 && e.ctrlKey) {
-          exports.event.login();         
-        } else if(e.keyCode == 85 && e.ctrlKey) {
-          exports.event.like();
-        } else if(e.keyCode == 77 && e.ctrlKey && e.shiftKey) {
-          exports.event.menu();           
-        } else if(e.keyCode == 83 && e.ctrlKey) {
-          $('.album_mask').toggleClass('hidden');
-        } else if(e.keyCode == 81 && e.ctrlKey) {
-          exports.event.exit();
-        } else if(e.keyCode == 32) { // play or pause                              
-          exports.event.play();
-        }
-
-      })
+      });
     }
 
   }
